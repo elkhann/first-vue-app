@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ColorDirective from '.color.js'
+import ColorDirective from './color.js'
 
 Vue.directive('colored', ColorDirective)
 

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h2>{{ title }}</h2>
-    <button></button>
+    <h2 v-colored>{{ title }}</h2>
   </div>
 </template>
 
