@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2 v-colored="'navy'">{{ title }}</h2>
+    <h2 v-colored:background="'red'" v-colored:color="'white'">{{ title }}</h2>
+    <h2 v-colored:color="'blue'">{{ title }}</h2>
   </div>
 </template>
 
