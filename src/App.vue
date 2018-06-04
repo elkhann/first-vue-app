@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       carName: 'Ford',
-      carYear: 2018,
+      carYear: 2017,
       newCarName: 'Mazda'
     }
   },
