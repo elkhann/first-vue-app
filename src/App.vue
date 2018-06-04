@@ -5,6 +5,7 @@
       :carName="carName"
       :carYear="carYear"
     ></app-car>
+    <button @click="changeCarName">Change name to {{newCarName}}</button>
   </div>
 </template>
 
@@ -16,9 +17,14 @@ export default {
   data () {
     return {
       carName: 'Ford',
-      carYear: 2018
+      carYear: 2018,
+      newCarName: 'Mazda'
     }
-
+  },
+  methods: {
+    changeCarName() {
+      this.carName = this.newCarName
+    }
   },
   components: {
     appCar: Car
