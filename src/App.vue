@@ -15,7 +15,7 @@ export default {
   name: 'app',
   data () {
     return {
-      carName: 'Ford from parent',
+      carName: 'Ford',
       carYear: 2018
     }
 
