@@ -2,6 +2,8 @@
   <div class="car">
     <h3>Name: {{ carName }} | {{ reverseCarName }}</h3>
     <p>Year: {{ carYear }}</p>
+    <button @click="changeCarName">Change name to Opel</button>
+    <button @click="changeFunc">Change name from Parent</button>
   </div>
 </template>
 
@@ -18,7 +20,14 @@ export default {
       // required: true,
       default: 'Default auto name' 
     },
-    carYear: Number
+    carYear: Number,
+    changeFunc: Function
+  },
+  methods: {
+    changeCarName() {
+      this.carName = 'Opel',
+      this.$emit('changedCarName', this.carName)
+    }
   },
   computed: {
     reverseCarName() {

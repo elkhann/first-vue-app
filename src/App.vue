@@ -4,8 +4,9 @@
     <app-car 
       :carName="carName"
       :carYear="carYear"
+      :changeFunc="changeCarName"
+      @changedCarName="carName = $event"
     ></app-car>
-    <button @click="changeCarName">Change name to {{newCarName}}</button>
   </div>
 </template>
 
