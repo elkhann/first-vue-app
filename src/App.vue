@@ -8,27 +8,26 @@
         {{ name }}
       </li>
     </ul>
+
+    <hr>
+
+    <app-list>  
+    
+    </app-list>
     
   </div>
 </template>
 
 <script>
+import ListMixin from './listMixin'
 
 export default {
   data() {
     return {
-      title: 'Hello I\'m Vue',
-      searchName: '',
-      names: ['Vlad', 'Max', 'Lena', 'Igor']
+      title: 'Hello I\'m Vue'
     }
   },
-  computed: {
-    filteredNames() {
-      return this.names.filter(name => {
-        return name.indexOf(this.searchName) != -1
-      })
-    }
-  },
+  mixins: [ListMixin],
   filters: {
     lowercase(value) {
       return value.toLowerCase()
