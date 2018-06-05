@@ -4,30 +4,24 @@
     
     <label>
       <input 
-        type="checkbox" 
-        value="instagram" 
-        v-model="social"> 
-          Instagram 
+        type="radio" value="instagram" v-model="social"> 
+        Instagram 
     </label>
     <label>
       <input 
-        type="checkbox" 
-        value="vk"        
-        v-model="social"> 
-          Vk
+        type="radio" value="vk" v-model="social"> 
+        Vk
     </label>
     <label>
       <input 
-        type="checkbox" 
-        value="fb"        
-        v-model="social"> 
-          Fb
+        type="radio" value="fb" v-model="social"> 
+        Fb
     </label>
 
     <hr>
 
     <ul>
-      <li v-for="el in social">{{ el }}</li>
+      <li>{{ social }}</li>
     </ul>
   </div>
 </template>
@@ -36,7 +30,7 @@
   export default {
     data() {
       return {
-        social: ['vk']
+        social: 'vk'
       }
     }
   };
