@@ -1,13 +1,34 @@
 <template>
   <div>
     <h2>Form inputs</h2>
-    <input type="text" v-model.lazy="name">
-    <p>{{ name }}</p>
+    
+    <label>
+      <input 
+        type="checkbox" 
+        value="instagram" 
+        v-model="social"> 
+          Instagram 
+    </label>
+    <label>
+      <input 
+        type="checkbox" 
+        value="vk"        
+        v-model="social"> 
+          Vk
+    </label>
+    <label>
+      <input 
+        type="checkbox" 
+        value="fb"        
+        v-model="social"> 
+          Fb
+    </label>
 
     <hr>
 
-    <textarea v-model="textarea"></textarea>
-    <p>{{ textarea }}</p>
+    <ul>
+      <li v-for="el in social">{{ el }}</li>
+    </ul>
   </div>
 </template>
 
@@ -15,8 +36,7 @@
   export default {
     data() {
       return {
-        name: 'Init input',
-        textarea: 'Init textarea'
+        social: ['vk']
       }
     }
   };
@@ -24,11 +44,5 @@
 </script>
 
 <style scoped>
-  textarea {
-    height: 100px;
-    width: 400px;
-  }
-  p{
-    white-space: pre;
-  }
+
 </style>
