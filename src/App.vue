@@ -1,6 +1,6 @@
 <template>
   <div class="contaner">
-    <form class="pt-3">
+    <form class="pt-3" @submit.prevent="onSubmit">
 
       <div class="form-group">
         <label for="email">E-mail</label>
@@ -60,6 +60,12 @@
         </div>                
       </div>
 
+      <button 
+        class="btn btn-success" 
+        type="submit"
+        :disabled="$v.$invalid"
+        >Submit</button>
+
      </form>
   </div>
 </template>
@@ -74,6 +80,13 @@ import { required, email, minLength,sameAs } from 'vuelidate/lib/validators'
         confirmPassword: ''
       }
     },
+    methods: {
+      onSubmit () {
+        console.log('Email:' , this.email);
+        console.log('Password:' , this.password);
+        
+      }
+    },
     validations: {
       email: {
         required,
@@ -84,7 +97,7 @@ import { required, email, minLength,sameAs } from 'vuelidate/lib/validators'
             setTimeout(() => {
               const value = newEmail !== 'test@mail.ru'
               resolve(value)
-            }, 3000)
+            }, 1000)
           })
         }
       },
