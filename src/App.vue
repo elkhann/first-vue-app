@@ -1,28 +1,27 @@
 <template>
-  <div>
-    <h2>Form inputs</h2>
-    
-    <input type="text" v-model.number="age">
-
-    <p>{{ age }}</p>
+  <div class="contaner">
+    <form class="pt-3">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input 
+          type="email" 
+          id="email" 
+          class="form-control"
+          v-model="email"
+        >
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
   export default {
-    data() {
+    data () {
       return {
-        age: 20
-      }
-    },
-    watch: {
-      age (value) {
-        console.log(value);
-        console.log(typeof value);        
+        email: ''
       }
     }
-  };
-  
+  }  
 </script>
 
 <style scoped>
