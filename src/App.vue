@@ -71,50 +71,48 @@
 </template>
 
 <script>
-import { required, email, minLength,sameAs } from 'vuelidate/lib/validators'
-  export default {
-    data () {
-      return {
-        email: '',
-        password: '',
-        confirmPassword: ''
-      }
-    },
-    methods: {
-      onSubmit () {
-        console.log('Email:' , this.email);
-        console.log('Password:' , this.password);
-        
-      }
-    },
-    validations: {
-      email: {
-        required,
-        email,
-        uniqEmail: function(newEmail) {
-          if (newEmail === '') return true
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const value = newEmail !== 'test@mail.ru'
-              resolve(value)
-            }, 1000)
-          })
-        }
-      },
-      password: {
-        required,
-        minLength: minLength(6)
-      },
-      confirmPassword: {
-        sameAs: sameAs('password')
-        // sameAs: sameAs((vue) => {
-        //   return vue.password
-        // })
-      }
+import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      confirmPassword: ""
+    };
+  },
+  methods: {
+    onSubmit() {
+      console.log("Email:", this.email);
+      console.log("Password:", this.password);
     }
-  }  
+  },
+  validations: {
+    email: {
+      required,
+      email,
+      uniqEmail: function(newEmail) {
+        if (newEmail === "") return true;
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const value = newEmail !== "test@mail.ru";
+            resolve(value);
+          }, 1000);
+        });
+      }
+    },
+    password: {
+      required,
+      minLength: minLength(6)
+    },
+    confirmPassword: {
+      sameAs: sameAs("password")
+      // sameAs: sameAs((vue) => {
+      //   return vue.password
+      // })
+    }
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
