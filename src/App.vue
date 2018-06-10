@@ -1,24 +1,102 @@
 <template>
   <div class="contaner">
     <form class="pt-3">
+
       <div class="form-group">
         <label for="email">E-mail</label>
         <input 
           type="email" 
           id="email" 
           class="form-control"
+          :class="{'is-invalid': $v.email.$error}"
+          @blur="$v.email.$touch()"
           v-model="email"
         >
+        <div class="invalid-feedback" v-if="!$v.email.required">
+          Email field is required
+        </div>        
+        <div class="invalid-feedback" v-if="!$v.email.email">
+          This field should be an email
+        </div>    
+        <div class="invalid-feedback" v-if="!$v.email.uniqEmail">
+          This email is already exist
+        </div>    
       </div>
-    </form>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          class="form-control"
+          :class="{'is-invalid': $v.password.$error}"
+          @blur="$v.password.$touch()"
+          v-model="password"
+        >
+        <div class="invalid-feedback" v-if="!$v.password.required">
+          Passsword field is required
+        </div>
+        <div class="invalid-feedback" v-if="!$v.password.minLength">
+          Min lenght of password is {{ $v.password.$params.minLength.min }}. 
+          Now it is {{ password.length }}
+        </div>                
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm password</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          class="form-control"
+          :class="{'is-invalid': $v.confirmPassword.$error}"
+          @blur="$v.confirmPassword.$touch()"
+          v-model="confirmPassword"
+        >
+        <div class="invalid-feedback" v-if="!$v.password.required">
+          Passsword field is required
+        </div>
+        <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">
+          Passsword should match
+        </div>                
+      </div>
+
+     </form>
   </div>
 </template>
 
 <script>
+import { required, email, minLength,sameAs } from 'vuelidate/lib/validators'
   export default {
     data () {
       return {
-        email: ''
+        email: '',
+        password: '',
+        confirmPassword: ''
+      }
+    },
+    validations: {
+      email: {
+        required,
+        email,
+        uniqEmail: function(newEmail) {
+          if (newEmail === '') return true
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const value = newEmail !== 'test@mail.ru'
+              resolve(value)
+            }, 3000)
+          })
+        }
+      },
+      password: {
+        required,
+        minLength: minLength(6)
+      },
+      confirmPassword: {
+        sameAs: sameAs('password')
+        // sameAs: sameAs((vue) => {
+        //   return vue.password
+        // })
       }
     }
   }  
